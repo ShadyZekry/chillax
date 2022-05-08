@@ -8,7 +8,7 @@ class Dictiornary {
     },
     CodeStrings.englishCode: {
       'hello': 'Hello',
-      'calledWhat': 'What would you like to be called in there?',
+      'calledWhat': 'What would you like\nto be called in there?',
     },
   };
 

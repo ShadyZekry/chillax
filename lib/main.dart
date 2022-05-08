@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.blue5,
+        backgroundColor: AppColors.blue4,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -49,12 +49,32 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Expanded(
-              child: Text(
-                Dictiornary.calledWhat,
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      Dictiornary.calledWhat,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(30),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadiusDirectional.only(
+                          bottomEnd: Radius.circular(40),
+                          topStart: Radius.circular(40),
+                        ),
+                        color: Color(0xFF3b8b6e),
+                      ),
+                      child: const Text('iaskdlf lsadjkl',
+                          style: TextStyle(color: Colors.white)),
+                    ),
+                  ],
                 ),
               ),
             ),
