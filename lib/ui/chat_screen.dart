@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:chillax/resources/colors.dart';
+import 'package:chillax/resources/strings.dart';
 import 'package:chillax/ui/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 
@@ -11,40 +12,77 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.blue5,
+        backgroundColor: AppColors.blue1,
         body: Column(
           children: [
-            Expanded(
-              child: Column(
-                children: const [
-            _buildBottomAppBar()
-                ],
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                Dictiornary.generalRoom,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  color: AppColors.blue5,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20),
+                  ),
+                ),
+                child: Column(
+                  children: const [
+                    ChatBubble(
+                        isMyMessage: true, message: 'abc', isHateSpeech: false),
+                    ChatBubble(
+                        isMyMessage: false,
+                        message: 'abc',
+                        isHateSpeech: false),
+                    ChatBubble(
+                        isMyMessage: true, message: 'abc', isHateSpeech: true),
+                    ChatBubble(
+                        isMyMessage: false, message: 'abc', isHateSpeech: true),
+                  ],
+                ),
+              ),
+            ),
+            _buildBottomAppBar()
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildBottomAppBar() {
     return Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.white,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
+      padding: const EdgeInsets.all(8),
+      color: Colors.white,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
           Expanded(
-                    child: TextField(
+            child: TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: Dictiornary.typeMessage,
                 hintStyle: const TextStyle(color: Colors.grey),
               ),
-                    ),
-                  ),
-                  Transform.rotate(
-                    angle: -30 * pi / 180,
-                    child: IconButton(
-                      onPressed: () {},
+            ),
+          ),
+          Transform.rotate(
+            angle: -30 * pi / 180,
+            child: IconButton(
+              onPressed: () {},
               icon: const Icon(Icons.send_rounded, color: AppColors.blue1),
-                    ),
-                  ),
-                ],
+            ),
+          ),
+        ],
       ),
     );
   }
