@@ -36,18 +36,35 @@ class ChatScreen extends StatelessWidget {
                     topLeft: Radius.circular(20),
                   ),
                 ),
-                child: Column(
-                  children: const [
-                    ChatBubble(
-                        isMyMessage: true, message: 'abc', isHateSpeech: false),
-                    ChatBubble(
-                        isMyMessage: false,
-                        message: 'abc',
-                        isHateSpeech: false),
-                    ChatBubble(
-                        isMyMessage: true, message: 'abc', isHateSpeech: true),
-                    ChatBubble(
-                        isMyMessage: false, message: 'abc', isHateSpeech: true),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Image.asset(
+                        'assets/images/pattern.png',
+                        repeat: ImageRepeat.repeat,
+                        color: Colors.white.withOpacity(0.15),
+                      ),
+                    ),
+                    Column(
+                      children: const [
+                        ChatBubble(
+                            isMyMessage: true,
+                            message: 'abc',
+                            isHateSpeech: false),
+                        ChatBubble(
+                            isMyMessage: false,
+                            message: 'abc',
+                            isHateSpeech: false),
+                        ChatBubble(
+                            isMyMessage: true,
+                            message: 'abc',
+                            isHateSpeech: true),
+                        ChatBubble(
+                            isMyMessage: false,
+                            message: 'a',
+                            isHateSpeech: true),
+                      ],
+                    ),
                   ],
                 ),
               ),
