@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:chillax/resources/colors.dart';
 import 'package:chillax/resources/strings.dart';
 import 'package:chillax/ui/widgets/chat_bubble.dart';
@@ -48,21 +46,53 @@ class ChatScreen extends StatelessWidget {
                     Column(
                       children: const [
                         ChatBubble(
-                            isMyMessage: true,
-                            message: 'abc',
-                            isHateSpeech: false),
+                          isMyMessage: true,
+                          message: 'abc',
+                          isHateSpeech: false,
+                          isObsecured: false,
+                        ),
                         ChatBubble(
-                            isMyMessage: false,
-                            message: 'abc',
-                            isHateSpeech: false),
+                          isMyMessage: false,
+                          message: 'abc',
+                          isHateSpeech: false,
+                          isObsecured: false,
+                        ),
                         ChatBubble(
-                            isMyMessage: true,
-                            message: 'abc',
-                            isHateSpeech: true),
+                          isMyMessage: true,
+                          message: 'abc',
+                          isHateSpeech: true,
+                          isObsecured: false,
+                        ),
                         ChatBubble(
-                            isMyMessage: false,
-                            message: 'a',
-                            isHateSpeech: true),
+                          isMyMessage: false,
+                          message: 'a',
+                          isHateSpeech: true,
+                          isObsecured: false,
+                        ),
+                        ChatBubble(
+                          isMyMessage: false,
+                          message: 'a',
+                          isHateSpeech: true,
+                          isObsecured: true,
+                        ),
+                        ChatBubble(
+                          isMyMessage: false,
+                          message: 'a',
+                          isHateSpeech: true,
+                          isObsecured: false,
+                        ),
+                        ChatBubble(
+                          isMyMessage: true,
+                          message: 'a',
+                          isHateSpeech: true,
+                          isObsecured: true,
+                        ),
+                        ChatBubble(
+                          isMyMessage: true,
+                          message: 'a',
+                          isHateSpeech: true,
+                          isObsecured: false,
+                        ),
                       ],
                     ),
                   ],
@@ -92,12 +122,9 @@ class ChatScreen extends StatelessWidget {
               ),
             ),
           ),
-          Transform.rotate(
-            angle: -30 * pi / 180,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.send_rounded, color: AppColors.blue1),
-            ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.send_rounded, color: AppColors.blue1),
           ),
         ],
       ),
