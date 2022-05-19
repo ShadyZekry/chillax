@@ -1,10 +1,11 @@
 import 'package:chillax/resources/colors.dart';
 import 'package:chillax/resources/strings.dart';
-import 'package:chillax/ui/widgets/chat_bubble.dart';
+import 'package:chillax/ui/widgets/app_message.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
+  final bool _shouldObsecure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -44,54 +45,54 @@ class ChatScreen extends StatelessWidget {
                       ),
                     ),
                     Column(
-                      children: const [
-                        ChatBubble(
+                      children: [
+                        AppMessage(
                           isMyMessage: true,
                           message: 'abc',
                           isHateSpeech: false,
-                          isObsecured: false,
+                          defaultObsecure: _shouldObsecure,
                         ),
-                        ChatBubble(
+                        AppMessage(
                           isMyMessage: false,
                           message: 'abc',
                           isHateSpeech: false,
-                          isObsecured: false,
+                          defaultObsecure: _shouldObsecure,
                         ),
-                        ChatBubble(
+                        AppMessage(
                           isMyMessage: true,
                           message: 'abc',
                           isHateSpeech: true,
-                          isObsecured: false,
+                          defaultObsecure: _shouldObsecure,
                         ),
-                        ChatBubble(
+                        AppMessage(
                           isMyMessage: false,
                           message: 'a',
                           isHateSpeech: true,
-                          isObsecured: false,
+                          defaultObsecure: _shouldObsecure,
                         ),
-                        ChatBubble(
+                        AppMessage(
                           isMyMessage: false,
                           message: 'a',
                           isHateSpeech: true,
-                          isObsecured: true,
+                          defaultObsecure: _shouldObsecure,
                         ),
-                        ChatBubble(
+                        AppMessage(
                           isMyMessage: false,
                           message: 'a',
                           isHateSpeech: true,
-                          isObsecured: false,
+                          defaultObsecure: _shouldObsecure,
                         ),
-                        ChatBubble(
+                        AppMessage(
                           isMyMessage: true,
                           message: 'a',
                           isHateSpeech: true,
-                          isObsecured: true,
+                          defaultObsecure: _shouldObsecure,
                         ),
-                        ChatBubble(
+                        AppMessage(
                           isMyMessage: true,
                           message: 'a',
                           isHateSpeech: true,
-                          isObsecured: false,
+                          defaultObsecure: _shouldObsecure,
                         ),
                       ],
                     ),
