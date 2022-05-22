@@ -9,6 +9,7 @@ class Dictiornary {
       'calledWhat': 'كيف ترغب انا يناديك الناس؟',
       'typeMessage': 'اكتب رسالتك هنا',
       'generalRoom': 'General Room',
+      'hateSpeech': 'خطاب الكراهية',
     },
     CodeStrings.englishCode: {
       'chillax': 'Chillax',
@@ -17,6 +18,7 @@ class Dictiornary {
       'calledWhat': 'What would you like\nto be called in there?',
       'typeMessage': 'Type your message here',
       'generalRoom': 'General Room',
+      'hateSpeech': 'Hate Speech',
     },
   };
 
@@ -26,6 +28,7 @@ class Dictiornary {
   static String get calledWhat => _translations[currentLanguage]?['calledWhat'] ?? '';
   static String get typeMessage => _translations[currentLanguage]?['typeMessage'] ?? '';
   static String get generalRoom => _translations[currentLanguage]?['generalRoom'] ?? '';
+  static String get hateSpeech => _translations[currentLanguage]?['hateSpeech'] ?? '';
 }
 
 class CodeStrings {
