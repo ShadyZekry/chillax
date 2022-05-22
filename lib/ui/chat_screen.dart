@@ -44,57 +44,21 @@ class ChatScreen extends StatelessWidget {
                         color: Colors.white.withOpacity(0.15),
                       ),
                     ),
-                    Column(
-                      children: [
-                        AppMessage(
-                          isMyMessage: true,
+                    BlocBuilder<ChatBloc, ChatState>(
+                      builder: (_, state) {
+                        return ListView.builder(
+                          itemCount: state.messages.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final Message message = state.messages[index];
+                            return AppMessage(
+                              isMyMessage: message.IsMyMessage,
                           message: 'abc',
-                          isHateSpeech: false,
+                              isHateSpeech: message.status == 1,
                           defaultObsecure: _shouldObsecure,
-                        ),
-                        AppMessage(
-                          isMyMessage: false,
-                          message: 'abc',
-                          isHateSpeech: false,
-                          defaultObsecure: _shouldObsecure,
-                        ),
-                        AppMessage(
-                          isMyMessage: true,
-                          message: 'abc',
-                          isHateSpeech: true,
-                          defaultObsecure: _shouldObsecure,
-                        ),
-                        AppMessage(
-                          isMyMessage: false,
-                          message: 'a',
-                          isHateSpeech: true,
-                          defaultObsecure: _shouldObsecure,
-                        ),
-                        AppMessage(
-                          isMyMessage: false,
-                          message: 'a',
-                          isHateSpeech: true,
-                          defaultObsecure: _shouldObsecure,
-                        ),
-                        AppMessage(
-                          isMyMessage: false,
-                          message: 'a',
-                          isHateSpeech: true,
-                          defaultObsecure: _shouldObsecure,
-                        ),
-                        AppMessage(
-                          isMyMessage: true,
-                          message: 'a',
-                          isHateSpeech: true,
-                          defaultObsecure: _shouldObsecure,
-                        ),
-                        AppMessage(
-                          isMyMessage: true,
-                          message: 'a',
-                          isHateSpeech: true,
-                          defaultObsecure: _shouldObsecure,
-                        ),
-                      ],
+                            );
+                          },
+                        );
+                      },
                     ),
                   ],
                 ),
