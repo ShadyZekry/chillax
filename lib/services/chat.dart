@@ -28,34 +28,6 @@ class ChatService {
           '[ { "userName": "fady", "message": "message", "status": 0 }, { "userName": "fady", "message": "message", "status": 1 }, { "userName": "fady", "message": "to", "status": 2 }, { "userName": "fady", "message": "shady", "status": 3 } ]';
       final List<Message> messages = Message.parse(jsonDecode(response));
       return messages;
-
-      // return [
-      //   Message(
-      //     senderName: 'me',
-      //     message: 'Hello',
-      //     status: 1,
-      //   ),
-      //   Message(
-      //     senderName: 'me',
-      //     message: 'Hello',
-      //     status: 1,
-      //   ),
-      //   Message(
-      //     senderName: 'me',
-      //     message: 'Hello',
-      //     status: 1,
-      //   ),
-      //   Message(
-      //     senderName: 'me',
-      //     message: 'Hello',
-      //     status: 1,
-      //   ),
-      //   Message(
-      //     senderName: 'me',
-      //     message: 'Hello',
-      //     status: 1,
-      //   ),
-      // ];
     } finally {
       client.close();
     }

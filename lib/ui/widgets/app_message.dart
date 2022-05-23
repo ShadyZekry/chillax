@@ -1,19 +1,14 @@
+import 'package:chillax/models/message.dart';
 import 'package:chillax/ui/widgets/app_hate_message.dart';
 import 'package:chillax/ui/widgets/app_obsecure_message.dart';
 import 'package:chillax/ui/widgets/app_regular_message.dart';
 import 'package:flutter/material.dart';
 
 class AppMessage extends StatefulWidget {
-  const AppMessage({
-    Key? key,
-    required this.isMyMessage,
-    required this.message,
-    required this.isHateSpeech,
-    required this.defaultObsecure,
-  }) : super(key: key);
-  final bool isMyMessage;
-  final String message;
-  final bool isHateSpeech;
+  const AppMessage(
+      {Key? key, required this.message, required this.defaultObsecure})
+      : super(key: key);
+  final Message message;
   final bool defaultObsecure;
 
   @override
@@ -34,24 +29,16 @@ class _AppMessageState extends State<AppMessage> {
 
   Widget _buildBubble() {
     if (_shouldObsecure) {
-      return AppObsecureMessage(
-        isMyMessage: widget.isMyMessage,
-        message: widget.message,
-      );
+      return AppObsecureMessage(message: widget.message);
     }
-    if (widget.isHateSpeech) {
-      return AppHateMessage(
-        isMyMessage: widget.isMyMessage,
-        message: widget.message,
-      );
+    if (_isAbnormalMessage) {
+      return AppSensitiveMessage(message: widget.message);
     }
 
-    return AppRegularMessage(
-      isMyMessage: widget.isMyMessage,
-      message: widget.message,
-    );
+    return AppRegularMessage(message: widget.message);
   }
 
   bool get _shouldObsecure =>
-      widget.isHateSpeech && widget.defaultObsecure && isObsecure;
+      _isAbnormalMessage && widget.defaultObsecure && isObsecure;
+  bool get _isAbnormalMessage => widget.message.status != 0;
 }

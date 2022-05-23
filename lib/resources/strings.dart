@@ -10,6 +10,9 @@ class Dictiornary {
       'typeMessage': 'اكتب رسالتك هنا',
       'generalRoom': 'General Room',
       'hateSpeech': 'خطاب الكراهية',
+      'hsContent': 'يتضمن خطاب كراهية.',
+      'offContent': 'يتضمن خطاب عدائي.',
+      'inapContent': 'يتضمن خطاب غير مناسب.',
     },
     CodeStrings.englishCode: {
       'chillax': 'Chillax',
@@ -19,16 +22,31 @@ class Dictiornary {
       'typeMessage': 'Type your message here',
       'generalRoom': 'General Room',
       'hateSpeech': 'Hate Speech',
+      'hateSpeech ': 'Hate Speech',
+      'hsContent': 'Hate speech content.',
+      'offContent': 'Offensive content.',
+      'inapContent': 'Inappropriate content.',
     },
   };
 
-  static String get chillChat => _translations[currentLanguage]?['chillChat'] ?? '';
+  static String get chillChat =>
+      _translations[currentLanguage]?['chillChat'] ?? '';
   static String get chillax => _translations[currentLanguage]?['chillax'] ?? '';
   static String get hello => _translations[currentLanguage]?['hello'] ?? '';
-  static String get calledWhat => _translations[currentLanguage]?['calledWhat'] ?? '';
-  static String get typeMessage => _translations[currentLanguage]?['typeMessage'] ?? '';
-  static String get generalRoom => _translations[currentLanguage]?['generalRoom'] ?? '';
-  static String get hateSpeech => _translations[currentLanguage]?['hateSpeech'] ?? '';
+  static String get calledWhat =>
+      _translations[currentLanguage]?['calledWhat'] ?? '';
+  static String get typeMessage =>
+      _translations[currentLanguage]?['typeMessage'] ?? '';
+  static String get generalRoom =>
+      _translations[currentLanguage]?['generalRoom'] ?? '';
+  static String get hateSpeech =>
+      _translations[currentLanguage]?['hateSpeech'] ?? '';
+  static String get hsContent =>
+      _translations[currentLanguage]?['hsContent'] ?? '';
+  static String get offContent =>
+      _translations[currentLanguage]?['offContent'] ?? '';
+  static String get inapContent =>
+      _translations[currentLanguage]?['inapContent'] ?? '';
 }
 
 class CodeStrings {

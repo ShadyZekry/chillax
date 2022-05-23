@@ -24,5 +24,5 @@ class Message {
     return body.map((json) => Message._fromJson(json)).toList();
   }
 
-  bool get IsMyMessage => senderName == 'me';
+  bool get isMyMessage => senderName == 'me';
 }
