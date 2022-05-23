@@ -25,7 +25,7 @@ class ChatService {
       // print(response.body);
       // final List<Message> messages = Message.parse(jsonDecode(response.body));
       String response =
-          '[ { "userName": "fady", "message": "message", "status": 0 }, { "userName": "fady", "message": "message", "status": 1 }, { "userName": "fady", "message": "to", "status": 2 }, { "userName": "fady", "message": "shady", "status": 3 } ]';
+          '[ { "userName": "fady", "message": "message", "status": 0 }, { "userName": "fady", "message": "hate", "status": 1 }, { "userName": "fady", "message": "message", "status": 1 }, { "userName": "fady", "message": "to", "status": 2 }, { "userName": "fady", "message": "shady", "status": 3 }, { "userName": "shady", "message": "message", "status": 0 }, { "userName": "shady", "message": "hate", "status": 1 }, { "userName": "shady", "message": "message", "status": 1 }, { "userName": "shady", "message": "to", "status": 2 }, { "userName": "shady", "message": "shady", "status": 3 } ]';
       final List<Message> messages = Message.parse(jsonDecode(response));
       return messages;
     } finally {

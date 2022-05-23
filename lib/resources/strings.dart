@@ -8,11 +8,12 @@ class Dictiornary {
       'hello': 'مرحبا',
       'calledWhat': 'كيف ترغب انا يناديك الناس؟',
       'typeMessage': 'اكتب رسالتك هنا',
-      'generalRoom': 'General Room',
+      'generalRoom': 'الغرفة العامة',
       'hateSpeech': 'خطاب الكراهية',
       'hsContent': 'يتضمن خطاب كراهية.',
       'offContent': 'يتضمن خطاب عدائي.',
       'inapContent': 'يتضمن خطاب غير مناسب.',
+      'tapView': 'اضغط للمشاهدة',
     },
     CodeStrings.englishCode: {
       'chillax': 'Chillax',
@@ -26,27 +27,21 @@ class Dictiornary {
       'hsContent': 'Hate speech content.',
       'offContent': 'Offensive content.',
       'inapContent': 'Inappropriate content.',
+      'tapView': 'Tap to view',
     },
   };
 
-  static String get chillChat =>
-      _translations[currentLanguage]?['chillChat'] ?? '';
+  static String get chillChat => _translations[currentLanguage]?['chillChat'] ?? '';
   static String get chillax => _translations[currentLanguage]?['chillax'] ?? '';
   static String get hello => _translations[currentLanguage]?['hello'] ?? '';
-  static String get calledWhat =>
-      _translations[currentLanguage]?['calledWhat'] ?? '';
-  static String get typeMessage =>
-      _translations[currentLanguage]?['typeMessage'] ?? '';
-  static String get generalRoom =>
-      _translations[currentLanguage]?['generalRoom'] ?? '';
-  static String get hateSpeech =>
-      _translations[currentLanguage]?['hateSpeech'] ?? '';
-  static String get hsContent =>
-      _translations[currentLanguage]?['hsContent'] ?? '';
-  static String get offContent =>
-      _translations[currentLanguage]?['offContent'] ?? '';
-  static String get inapContent =>
-      _translations[currentLanguage]?['inapContent'] ?? '';
+  static String get calledWhat => _translations[currentLanguage]?['calledWhat'] ?? '';
+  static String get typeMessage => _translations[currentLanguage]?['typeMessage'] ?? '';
+  static String get generalRoom => _translations[currentLanguage]?['generalRoom'] ?? '';
+  static String get hateSpeech => _translations[currentLanguage]?['hateSpeech'] ?? '';
+  static String get hsContent => _translations[currentLanguage]?['hsContent'] ?? '';
+  static String get offContent => _translations[currentLanguage]?['offContent'] ?? '';
+  static String get inapContent => _translations[currentLanguage]?['inapContent'] ?? '';
+  static String get tapView => _translations[currentLanguage]?['tapView'] ?? '';
 }
 
 class CodeStrings {

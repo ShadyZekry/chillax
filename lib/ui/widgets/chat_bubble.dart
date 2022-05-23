@@ -1,12 +1,12 @@
 import 'package:bubble/bubble.dart';
-import 'package:chillax/resources/colors.dart';
 import 'package:flutter/material.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({
     Key? key,
     required this.isMyMessage,
-    required this.message,
+    this.message,
+    this.content,
     required this.messageColor,
     required this.borderColor,
     required this.backgroundColor,
@@ -14,7 +14,8 @@ class ChatBubble extends StatelessWidget {
     required this.shadowElevation,
   }) : super(key: key);
   final bool isMyMessage;
-  final String message;
+  final String? message;
+  final Widget? content;
   final Color messageColor;
   final Color borderColor;
   final Color? backgroundColor;
@@ -35,14 +36,14 @@ class ChatBubble extends StatelessWidget {
           shadowColor: shadowColor,
           elevation: shadowElevation,
           borderColor: borderColor,
-          child: Text(
-            message,
-            style: TextStyle(
-              // fontStyle: isObsecured ? FontStyle.italic : null,
-              color: messageColor,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          child: content ??
+              Text(
+                message ?? '',
+                style: TextStyle(
+                  color: messageColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
         ),
       ),
     );
