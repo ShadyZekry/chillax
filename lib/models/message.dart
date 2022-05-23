@@ -11,5 +11,18 @@ class Message {
     required this.status,
   });
 
+  factory Message._fromJson(Map<String, dynamic> json) {
+    return Message(
+      message: json['message'],
+      senderName: json['userName'],
+      // dateTime: DateTime.parse(json['dateTime']),
+      status: json['status'],
+    );
+  }
+
+  static List<Message> parse(List<dynamic> body) {
+    return body.map((json) => Message._fromJson(json)).toList();
+  }
+
   bool get IsMyMessage => senderName == 'me';
 }

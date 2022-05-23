@@ -109,7 +109,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             final Message message = state.messages[index];
                             return AppMessage(
                               isMyMessage: message.IsMyMessage,
-                              message: 'abc',
+                              message: message.message,
                               isHateSpeech: message.status == 1,
                               defaultObsecure: _shouldObsecure,
                             );
