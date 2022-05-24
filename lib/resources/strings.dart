@@ -14,6 +14,7 @@ class Dictiornary {
       'offContent': 'يتضمن خطاب عدائي.',
       'inapContent': 'يتضمن خطاب غير مناسب.',
       'tapView': 'اضغط للمشاهدة',
+      'signsOfDepression': 'دليل وجود اكتئاب !',
     },
     CodeStrings.englishCode: {
       'chillax': 'Chillax',
@@ -28,6 +29,7 @@ class Dictiornary {
       'offContent': 'Offensive content.',
       'inapContent': 'Inappropriate content.',
       'tapView': 'Tap to view',
+      'signsOfDepression': 'Signs of depression !',
     },
   };
 
@@ -42,6 +44,7 @@ class Dictiornary {
   static String get offContent => _translations[currentLanguage]?['offContent'] ?? '';
   static String get inapContent => _translations[currentLanguage]?['inapContent'] ?? '';
   static String get tapView => _translations[currentLanguage]?['tapView'] ?? '';
+  static String get signsOfDepression => _translations[currentLanguage]?['signsOfDepression'] ?? '';
 }
 
 class CodeStrings {
