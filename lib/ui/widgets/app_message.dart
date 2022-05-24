@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:chillax/models/message.dart';
 import 'package:chillax/ui/widgets/app_depression_message.dart';
 import 'package:chillax/ui/widgets/app_hate_message.dart';
@@ -24,7 +26,17 @@ class _AppMessageState extends State<AppMessage> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => setState(() => isObsecure = !isObsecure),
-      child: _buildBubble(),
+      child: Row(
+        mainAxisAlignment: widget.message.isMyMessage
+            ? MainAxisAlignment.start
+            : MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (widget.message.isMyMessage) _buildInitials(),
+          _buildBubble(),
+          if (!widget.message.isMyMessage) _buildInitials(),
+        ],
+      ),
     );
   }
 
@@ -40,6 +52,26 @@ class _AppMessageState extends State<AppMessage> {
     }
 
     return AppRegularMessage(message: widget.message);
+  }
+
+  Widget _buildInitials() {
+    final int nameSeed =
+        widget.message.senderName.codeUnits.fold(0, (a, b) => a + b);
+    return CircleAvatar(
+      // backgroundColor: Colors.amber[100],
+      backgroundColor:
+          Color((math.Random(nameSeed).nextDouble() * 0xFFFFFF).toInt())
+              .withOpacity(0.4),
+      radius: 15,
+      child: Text(
+        widget.message.senderName.characters.toUpperCase().first,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
   }
 
   bool get _shouldObsecure =>
