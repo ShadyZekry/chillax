@@ -8,4 +8,7 @@ class AppLinks {
   static const usernameApi = apisUrl + '/User';
   static const lastMessagesApi = apisUrl + '/Messages';
   static const sendMessageApi = apisUrl + '/Message';
+
+  static const lastMessagesRoute = '/Chillax/Messages';
+  static const serverUriOnly = '9591-105-41-169-240.eu.ngrok.io';
 }

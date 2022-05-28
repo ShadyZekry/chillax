@@ -21,12 +21,13 @@ class ChatService {
   static Future<List<Message>> getAllMessages() async {
     http.Client client = http.Client();
     try {
-      var url = Uri.parse(AppLinks.lastMessagesApi);
-      http.Response response = await http.get(url, headers: {
-        'Accept': 'application/json',
-        'pageIndex': '0',
-        'pageSize': '100',
-      });
+      var url = Uri.https(
+        AppLinks.serverUriOnly,
+        AppLinks.lastMessagesRoute,
+        {'pageIndex': '1', 'pageSize': '1000'},
+      );
+      http.Response response =
+          await http.get(url, headers: {'Accept': 'application/json'});
       print(response.body);
       final List<Message> messages = Message.parse(jsonDecode(response.body));
 //       String response = '''
@@ -115,5 +116,20 @@ class ChatService {
         ),
       ),
     );
+  }
+
+  static Future<void> sendMessage(String message) async {
+    http.Client client = http.Client();
+    try {
+      var url = Uri.parse(AppLinks.sendMessageApi);
+      http.Response response = await http.post(
+        url,
+        headers: {'Accept': 'application/json'},
+        body: {'userName': ChatService.username, 'message': message},
+      );
+      print(response.body);
+    } finally {
+      client.close();
+    }
   }
 }

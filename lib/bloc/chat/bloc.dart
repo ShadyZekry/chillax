@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(ChatState(messages: [], myName: '')) {
     on<ChatScreenLaunched>(_onChatScreenLaunch);
+    on<SendMessageTapped>(_onSendMessageTap);
   }
 
   Future<void> _onChatScreenLaunch(
@@ -16,5 +17,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         emit(state.copyWith(messages: messages..add(message))));
 
     emit(state.copyWith(messages: messages));
+  }
+
+  Future<void> _onSendMessageTap(SendMessageTapped event, Emitter emit) async {
+    await ChatService.sendMessage(event.message);
   }
 }

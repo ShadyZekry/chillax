@@ -5,6 +5,7 @@ import 'package:chillax/models/message.dart';
 import 'package:chillax/resources/colors.dart';
 import 'package:chillax/resources/strings.dart';
 import 'package:chillax/ui/widgets/app_message.dart';
+import 'package:chillax/ui/widgets/message_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,9 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 Row(
                   children: [
-                    Expanded(
-                      child: Text(Dictiornary.hateSpeech),
-                    ),
+                    Expanded(child: Text(Dictiornary.hateSpeech)),
                     Expanded(
                       child: Align(
                         alignment: AlignmentDirectional.centerEnd,
@@ -124,34 +123,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
               ),
             ),
-            _buildBottomAppBar()
+            BlocProvider(
+              create: (context) => ChatBloc(),
+              child: MessageAppBar(),
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildBottomAppBar() {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      color: Colors.white,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: Dictiornary.typeMessage,
-                hintStyle: const TextStyle(color: Colors.grey),
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.send_rounded, color: AppColors.blue1),
-          ),
-        ],
       ),
     );
   }

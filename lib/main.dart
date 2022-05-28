@@ -26,8 +26,11 @@ class MyApp extends StatelessWidget {
       title: Dictiornary.chillax,
       navigatorKey: AppNavigators.maninNavigatorKey,
       theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Montserrat'),
-      home: BlocProvider(
-        create: (context) => UsernameBloc(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => UsernameBloc()),
+          BlocProvider(create: (context) => ChatBloc()),
+        ],
         child: const UsernameScreen(),
       ),
     );
