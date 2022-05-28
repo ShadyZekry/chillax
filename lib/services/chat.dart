@@ -8,6 +8,16 @@ import 'package:http/http.dart' as http;
 class ChatService {
   static String username = '';
 
+  static Future<void> registerUsername(String username) async {
+    var url = Uri.parse(AppLinks.usernameApi);
+    http.Response response = await http.post(
+      url,
+      headers: {'Accept': 'application/json'},
+      body: {'userName': username},
+    );
+    print(response.body);
+  }
+
   static Future<List<Message>> getAllMessages() async {
     http.Client client = http.Client();
     try {

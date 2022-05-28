@@ -7,12 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UsernameBloc extends Bloc<UsernameEvent, UsernameState> {
-  UsernameBloc() : super(UsernameState(messages: [], myName: ''));
+  UsernameBloc() : super(UsernameState(messages: [], myName: '')) {
+    on<UsernameEntered>(_onUsernameEnter);
+  }
 
-  void usernameSubmitted(String username) {
-    if (username.isEmpty) return;
+  Future<void> _onUsernameEnter(UsernameEntered event, Emitter emit) async {
+    if (event.username.isEmpty) return;
 
-    ChatService.username = username;
+    ChatService.username = event.username;
+    await ChatService.registerUsername(event.username);
     AppNavigators.maninNavigator
         ?.push(MaterialPageRoute(builder: (_) => const ChatScreen()));
   }

@@ -1,3 +1,6 @@
 abstract class UsernameEvent {}
 
-class UsernameScreenLaunched extends UsernameEvent {}
+class UsernameEntered extends UsernameEvent {
+  final String username;
+  UsernameEntered(this.username);
+}
