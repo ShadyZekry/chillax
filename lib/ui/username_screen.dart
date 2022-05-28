@@ -1,5 +1,6 @@
 import 'package:chillax/resources/colors.dart';
 import 'package:chillax/resources/strings.dart';
+import 'package:chillax/ui/widgets/username_field.dart';
 import 'package:flutter/material.dart';
 
 class UsernameScreen extends StatefulWidget {
@@ -68,19 +69,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
                             color: Colors.white,
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(30),
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadiusDirectional.only(
-                              bottomEnd: Radius.circular(40),
-                              topStart: Radius.circular(40),
-                            ),
-                            color: Color(0xFF3b8b6e),
-                          ),
-                          child: const Text('Xx_NoobMaster69_xX',
-                              style: TextStyle(color: Colors.white)),
-                        ),
+                        const UsernameField(),
                       ],
                     ),
                   ),

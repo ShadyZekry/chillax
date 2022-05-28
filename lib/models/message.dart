@@ -1,3 +1,5 @@
+import 'package:chillax/services/chat.dart';
+
 class Message {
   final String message;
   final String senderName;
@@ -24,5 +26,5 @@ class Message {
     return body.map((json) => Message._fromJson(json)).toList();
   }
 
-  bool get isMyMessage => senderName == 'shady';
+  bool get isMyMessage => senderName == ChatService.username;
 }
