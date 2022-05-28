@@ -9,7 +9,7 @@ class ChatService {
   static String username = '';
 
   static Future<void> registerUsername(String username) async {
-    var url = Uri.parse(AppLinks.usernameApi);
+    var url = Uri.https(AppLinks.serverUrl, AppLinks.usernameApi);
     http.Response response = await http.post(
       url,
       headers: {'Accept': 'application/json'},
@@ -22,7 +22,7 @@ class ChatService {
     http.Client client = http.Client();
     try {
       var url = Uri.https(
-        AppLinks.serverUriOnly,
+        AppLinks.serverUrl,
         AppLinks.lastMessagesRoute,
         {'pageIndex': '1', 'pageSize': '1000'},
       );
@@ -108,20 +108,23 @@ class ChatService {
     await hubConnection.start();
     hubConnection.on(
       "Send",
-      (messageMap) => onNewMessage(
-        Message(
-          message: (messageMap?.first as Map)['message'],
-          senderName: (messageMap?.first as Map)['userName'],
-          status: (messageMap?.first as Map)['status'],
-        ),
-      ),
+      (messageMap) {
+        if (messageMap?.isEmpty ?? true) return;
+        onNewMessage(
+          Message(
+            senderName: messageMap![0] as String,
+            message: messageMap[1] as String,
+            status: messageMap[2] as int,
+          ),
+        );
+      },
     );
   }
 
   static Future<void> sendMessage(String message) async {
     http.Client client = http.Client();
     try {
-      var url = Uri.parse(AppLinks.sendMessageApi);
+      var url = Uri.https(AppLinks.serverUrl, AppLinks.sendMessageApi);
       http.Response response = await http.post(
         url,
         headers: {'Accept': 'application/json'},

@@ -1,14 +1,14 @@
 class AppLinks {
-  static const serverUrl = 'https://9591-105-41-169-240.eu.ngrok.io';
+  // Everything is https
+  static const serverUrl = '3694-105-41-169-240.eu.ngrok.io';
 
   static const signalRHubName = '/chat';
-  static const signalRUrl = serverUrl + '/chat';
-  static const apisUrl = serverUrl + '/Chillax';
+  static const signalRUrl = 'https://$serverUrl/chat';
 
-  static const usernameApi = apisUrl + '/User';
-  static const lastMessagesApi = apisUrl + '/Messages';
-  static const sendMessageApi = apisUrl + '/Message';
+  static const apisMainRoute = '/Chillax';
+  static const usernameApi = apisMainRoute + '/User';
+  static const lastMessagesApi = apisMainRoute + '/Messages';
+  static const sendMessageApi = apisMainRoute + '/Message';
 
-  static const lastMessagesRoute = '/Chillax/Messages';
-  static const serverUriOnly = '9591-105-41-169-240.eu.ngrok.io';
+  static const lastMessagesRoute = apisMainRoute + '/Messages';
 }

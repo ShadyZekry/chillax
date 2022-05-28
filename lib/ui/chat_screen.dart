@@ -105,18 +105,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       create: (context) =>
                           ChatBloc()..add(ChatScreenLaunched()),
                       child: BlocBuilder<ChatBloc, ChatState>(
-                        builder: (_, state) {
-                          return ListView.builder(
-                            itemCount: state.messages.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final Message message = state.messages[index];
-                              return AppMessage(
-                                message: message,
-                                defaultObsecure: _shouldObsecure,
-                              );
-                            },
-                          );
-                        },
+                        builder: (_, state) => ListView.builder(
+                          itemCount: state.messages.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final Message message = state.messages[index];
+                            return AppMessage(
+                              message: message,
+                              defaultObsecure: _shouldObsecure,
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],
@@ -125,7 +123,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             BlocProvider(
               create: (context) => ChatBloc(),
-              child: MessageAppBar(),
+              child: const MessageAppBar(),
             ),
           ],
         ),

@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MessageAppBar extends StatelessWidget {
-  MessageAppBar({Key? key}) : super(key: key);
-  final TextEditingController _controller = TextEditingController();
+  const MessageAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class MessageAppBar extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
-              controller: _controller,
+              controller: messageContent(context),
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: Dictiornary.typeMessage,
@@ -30,11 +29,14 @@ class MessageAppBar extends StatelessWidget {
           IconButton(
             onPressed: () => context
                 .read<ChatBloc>()
-                .add(SendMessageTapped(_controller.text)),
+                .add(SendMessageTapped(messageContent(context).text)),
             icon: const Icon(Icons.send_rounded, color: AppColors.blue1),
           ),
         ],
       ),
     );
   }
+
+  TextEditingController messageContent(BuildContext context) =>
+      context.read<ChatBloc>().state.messageController;
 }
