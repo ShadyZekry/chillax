@@ -1,4 +1,5 @@
 import 'package:chillax/bloc/chat/bloc.dart';
+import 'package:chillax/bloc/chat/events.dart';
 import 'package:chillax/bloc/chat/states.dart';
 import 'package:chillax/models/message.dart';
 import 'package:chillax/resources/colors.dart';
@@ -101,19 +102,23 @@ class _ChatScreenState extends State<ChatScreen> {
                         color: Colors.white.withOpacity(0.15),
                       ),
                     ),
-                    BlocBuilder<ChatBloc, ChatState>(
-                      builder: (_, state) {
-                        return ListView.builder(
-                          itemCount: state.messages.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            final Message message = state.messages[index];
-                            return AppMessage(
-                              message: message,
-                              defaultObsecure: _shouldObsecure,
-                            );
-                          },
-                        );
-                      },
+                    BlocProvider(
+                      create: (context) =>
+                          ChatBloc()..add(ChatScreenLaunched()),
+                      child: BlocBuilder<ChatBloc, ChatState>(
+                        builder: (_, state) {
+                          return ListView.builder(
+                            itemCount: state.messages.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              final Message message = state.messages[index];
+                              return AppMessage(
+                                message: message,
+                                defaultObsecure: _shouldObsecure,
+                              );
+                            },
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

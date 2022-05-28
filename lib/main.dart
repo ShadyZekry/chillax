@@ -1,7 +1,10 @@
 import 'package:chillax/bloc/chat/bloc.dart';
 import 'package:chillax/bloc/chat/events.dart';
+import 'package:chillax/bloc/username/bloc.dart';
 import 'package:chillax/resources/colors.dart';
-import 'package:chillax/ui/chat_screen.dart';
+import 'package:chillax/resources/navigators.dart';
+import 'package:chillax/resources/strings.dart';
+import 'package:chillax/ui/username_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,11 +23,16 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: Dictiornary.chillax,
+      navigatorKey: AppNavigators.maninNavigatorKey,
       theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Montserrat'),
-      home: BlocProvider(
-        create: (context) => ChatBloc()..add(ChatScreenLaunched()),
-        child: const ChatScreen(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => UsernameBloc()),
+          BlocProvider(
+              create: (context) => ChatBloc()..add(ChatScreenLaunched())),
+        ],
+        child: const UsernameScreen(),
       ),
     );
   }
