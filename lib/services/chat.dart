@@ -21,90 +21,99 @@ class ChatService {
   static Future<List<Message>> getAllMessages() async {
     http.Client client = http.Client();
     try {
-      // var url = Uri.parse(lastMessagesApi);
-      // http.Response response = await http.get(url, headers: {
-      //   'Accept': 'application/json',
-      //   'pageIndex': '0',
-      //   'pageSize': '100',
-      // });
-      // print(response.body);
-      // final List<Message> messages = Message.parse(jsonDecode(response.body));
-      String response = '''
-[
-	{
-		"userName": "fady",
-		"message": "message",
-		"status": 0
-	},
-	{
-		"userName": "fady",
-		"message": "hate",
-		"status": 1
-	},
-	{
-		"userName": "fady",
-		"message": "message",
-		"status": 1
-	},
-	{
-		"userName": "fady",
-		"message": "to",
-		"status": 2
-	},
-	{
-		"userName": "fady",
-		"message": "shady",
-		"status": 3
-	},
-	{
-		"userName": "shady",
-		"message": "message",
-		"status": 0
-	},
-	{
-		"userName": "shady",
-		"message": "hate",
-		"status": 1
-	},
-	{
-		"userName": "shady",
-		"message": "message",
-		"status": 1
-	},
-	{
-		"userName": "shady",
-		"message": "to",
-		"status": 2
-	},
-	{
-		"userName": "shady",
-		"message": "shady",
-		"status": 3
-	},
-	{
-		"userName": "shady",
-		"message": "I'm going to kill myself 🤡",
-		"status": 4
-	},
-	{
-		"userName": "fady",
-		"message": "Suffering from tasks 🤕",
-		"status": 4
-	}
-]
-      ''';
-      final List<Message> messages = Message.parse(jsonDecode(response));
+      var url = Uri.parse(AppLinks.lastMessagesApi);
+      http.Response response = await http.get(url, headers: {
+        'Accept': 'application/json',
+        'pageIndex': '0',
+        'pageSize': '100',
+      });
+      print(response.body);
+      final List<Message> messages = Message.parse(jsonDecode(response.body));
+//       String response = '''
+// [
+// 	{
+// 		"userName": "fady",
+// 		"message": "message",
+// 		"status": 0
+// 	},
+// 	{
+// 		"userName": "fady",
+// 		"message": "hate",
+// 		"status": 1
+// 	},
+// 	{
+// 		"userName": "fady",
+// 		"message": "message",
+// 		"status": 1
+// 	},
+// 	{
+// 		"userName": "fady",
+// 		"message": "to",
+// 		"status": 2
+// 	},
+// 	{
+// 		"userName": "fady",
+// 		"message": "shady",
+// 		"status": 3
+// 	},
+// 	{
+// 		"userName": "shady",
+// 		"message": "message",
+// 		"status": 0
+// 	},
+// 	{
+// 		"userName": "shady",
+// 		"message": "hate",
+// 		"status": 1
+// 	},
+// 	{
+// 		"userName": "shady",
+// 		"message": "message",
+// 		"status": 1
+// 	},
+// 	{
+// 		"userName": "shady",
+// 		"message": "to",
+// 		"status": 2
+// 	},
+// 	{
+// 		"userName": "shady",
+// 		"message": "shady",
+// 		"status": 3
+// 	},
+// 	{
+// 		"userName": "shady",
+// 		"message": "I'm going to kill myself 🤡",
+// 		"status": 4
+// 	},
+// 	{
+// 		"userName": "fady",
+// 		"message": "Suffering from tasks 🤕",
+// 		"status": 4
+// 	}
+// ]
+//       ''';
+      // final List<Message> messages = Message.parse(jsonDecode(response));
       return messages;
     } finally {
       client.close();
     }
   }
 
-  static Future<void> listenOnLastMessage() async {
+  static Future<void> listenOnLastMessage(
+      void Function(Message) onNewMessage) async {
     final hubConnection =
         HubConnectionBuilder().withUrl(AppLinks.signalRUrl).build();
     await hubConnection.start();
-    // await hubConnection.('Send', args: ["name", "message", 1]);
-    hubConnection.on("Send", (abc) => print(abc));
+    hubConnection.on(
+      "Send",
+      (messageMap) => onNewMessage(
+        Message(
+          message: (messageMap?.first as Map)['message'],
+          senderName: (messageMap?.first as Map)['userName'],
+          status: (messageMap?.first as Map)['status'],
+        ),
+      ),
+    );
   }
 }

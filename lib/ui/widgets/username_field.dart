@@ -1,4 +1,5 @@
 import 'package:chillax/bloc/username/bloc.dart';
+import 'package:chillax/bloc/username/events.dart';
 import 'package:chillax/resources/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,7 @@ class UsernameField extends StatelessWidget {
         style: const TextStyle(color: Colors.white),
         textAlign: TextAlign.center,
         onSubmitted: (value) =>
-            context.read<UsernameBloc>().usernameSubmitted(value),
+            context.read<UsernameBloc>().add(UsernameEntered(value)),
         decoration: InputDecoration.collapsed(
           hintText: Dictiornary.enterUsername,
           hintStyle: const TextStyle(color: Colors.white),

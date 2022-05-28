@@ -12,6 +12,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   Future<void> _onChatScreenLaunch(
       ChatScreenLaunched event, Emitter emit) async {
     List<Message> messages = await ChatService.getAllMessages();
+    ChatService.listenOnLastMessage((Message message) =>
+        emit(state.copyWith(messages: messages..add(message))));
 
     emit(state.copyWith(messages: messages));
   }
