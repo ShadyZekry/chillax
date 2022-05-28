@@ -31,7 +31,7 @@ class ChatBubble extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Bubble(
-          nip: isMyMessage ? BubbleNip.leftTop : BubbleNip.rightTop,
+          nip: isMyMessage ? BubbleNip.rightTop : BubbleNip.leftTop,
           color: backgroundColor,
           shadowColor: shadowColor,
           elevation: shadowElevation,

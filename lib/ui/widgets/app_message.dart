@@ -28,13 +28,13 @@ class _AppMessageState extends State<AppMessage> {
       onTap: () => setState(() => isObsecure = !isObsecure),
       child: Row(
         mainAxisAlignment: widget.message.isMyMessage
-            ? MainAxisAlignment.start
-            : MainAxisAlignment.end,
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (widget.message.isMyMessage) _buildInitials(),
-          _buildBubble(),
           if (!widget.message.isMyMessage) _buildInitials(),
+          _buildBubble(),
+          if (widget.message.isMyMessage) _buildInitials(),
         ],
       ),
     );
@@ -58,7 +58,6 @@ class _AppMessageState extends State<AppMessage> {
     final int nameSeed =
         widget.message.senderName.codeUnits.fold(0, (a, b) => a + b);
     return CircleAvatar(
-      // backgroundColor: Colors.amber[100],
       backgroundColor:
           Color((math.Random(nameSeed).nextDouble() * 0xFFFFFF).toInt())
               .withOpacity(0.4),

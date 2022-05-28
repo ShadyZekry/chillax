@@ -14,8 +14,8 @@ class AppDepressionMessage extends StatelessWidget {
       isMyMessage: message.isMyMessage,
       content: Column(
         crossAxisAlignment: message.isMyMessage
-            ? CrossAxisAlignment.end
-            : CrossAxisAlignment.start,
+            ? CrossAxisAlignment.start
+            : CrossAxisAlignment.end,
         children: [
           Text(
             message.message,

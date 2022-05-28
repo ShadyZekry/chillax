@@ -17,8 +17,8 @@ class ObsecureContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: message.isMyMessage
-          ? CrossAxisAlignment.end
-          : CrossAxisAlignment.start,
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.end,
       children: [
         Text(
           _messageTypes[message.status] ?? '',
