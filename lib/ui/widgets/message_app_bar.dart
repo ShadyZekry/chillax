@@ -26,17 +26,19 @@ class MessageAppBar extends StatelessWidget {
               ),
             ),
           ),
-          IconButton(
-            onPressed: () => context
-                .read<ChatBloc>()
-                .add(SendMessageTapped(messageContent(context).text)),
-            icon: const Icon(Icons.send_rounded, color: AppColors.blue1),
-          ),
+          BlocProvider(
+            create: (context) => ChatBloc.instance,
+            child: IconButton(
+              onPressed: () => ChatBloc.instance
+                  .add(SendMessageTapped(messageContent(context).text)),
+              icon: const Icon(Icons.send_rounded, color: AppColors.blue1),
+            ),
+          )
         ],
       ),
     );
   }
 
   TextEditingController messageContent(BuildContext context) =>
-      context.read<ChatBloc>().state.messageController;
+      ChatBloc.instance.state.messageController;
 }

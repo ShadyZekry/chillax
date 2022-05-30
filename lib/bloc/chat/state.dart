@@ -6,7 +6,7 @@ class ChatState {
   final String myName;
   final TextEditingController messageController;
 
-  ChatState._internal(this.messages, this.myName, this.messageController);
+  const ChatState._internal(this.messages, this.myName, this.messageController);
 
   factory ChatState(
           {required List<Message> messages,

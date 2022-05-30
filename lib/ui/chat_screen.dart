@@ -1,6 +1,6 @@
 import 'package:chillax/bloc/chat/bloc.dart';
 import 'package:chillax/bloc/chat/events.dart';
-import 'package:chillax/bloc/chat/states.dart';
+import 'package:chillax/bloc/chat/state.dart';
 import 'package:chillax/models/message.dart';
 import 'package:chillax/resources/colors.dart';
 import 'package:chillax/resources/strings.dart';
@@ -103,7 +103,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     BlocProvider(
                       create: (context) =>
-                          ChatBloc()..add(ChatScreenLaunched()),
+                          ChatBloc.instance..add(ChatScreenLaunched()),
                       child: BlocBuilder<ChatBloc, ChatState>(
                         builder: (_, state) => ListView.builder(
                           itemCount: state.messages.length,
@@ -122,7 +122,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
             BlocProvider(
-              create: (context) => ChatBloc(),
+              create: (context) => ChatBloc.instance,
               child: const MessageAppBar(),
             ),
           ],
