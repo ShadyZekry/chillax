@@ -10,7 +10,10 @@ class ObsecureContent extends StatelessWidget {
     1: Dictiornary.hsContent,
     2: Dictiornary.offContent,
     3: Dictiornary.inapContent,
-    4: "depression",
+    // 4: depression,
+    5: Dictiornary.hsContent,
+    6: Dictiornary.offContent,
+    7: Dictiornary.inapContent,
   };
 
   @override
