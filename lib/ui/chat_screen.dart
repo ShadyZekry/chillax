@@ -107,8 +107,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: BlocBuilder<ChatBloc, ChatState>(
                         builder: (_, state) => ListView.builder(
                           itemCount: state.messages.length,
+                          reverse: true,
                           itemBuilder: (BuildContext context, int index) {
-                            final Message message = state.messages[index];
+                            final Message message =
+                                state.messages.reversed.toList()[index];
                             return AppMessage(
                               message: message,
                               defaultObsecure: _shouldObsecure,
