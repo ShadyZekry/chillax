@@ -1,6 +1,6 @@
 class AppLinks {
   // Everything is https
-  static const serverUrl = 'c36b-105-41-169-240.eu.ngrok.io';
+  static const serverUrl = '1381-41-68-152-203.eu.ngrok.io';
 
   static const signalRHubName = '/chat';
   static const signalRUrl = 'https://$serverUrl/chat';

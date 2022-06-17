@@ -24,26 +24,28 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: isMyMessage
-          ? AlignmentDirectional.centerStart
-          : AlignmentDirectional.centerEnd,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Bubble(
-          nip: isMyMessage ? BubbleNip.rightTop : BubbleNip.leftTop,
-          color: backgroundColor,
-          shadowColor: shadowColor,
-          elevation: shadowElevation,
-          borderColor: borderColor,
-          child: content ??
-              Text(
-                message ?? '',
-                style: TextStyle(
-                  color: messageColor,
-                  fontWeight: FontWeight.w600,
+    return Expanded(
+      child: Align(
+        alignment: isMyMessage
+            ? AlignmentDirectional.centerEnd
+            : AlignmentDirectional.centerStart,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Bubble(
+            nip: isMyMessage ? BubbleNip.rightTop : BubbleNip.leftTop,
+            color: backgroundColor,
+            shadowColor: shadowColor,
+            elevation: shadowElevation,
+            borderColor: borderColor,
+            child: content ??
+                Text(
+                  message ?? '',
+                  style: TextStyle(
+                    color: messageColor,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
+          ),
         ),
       ),
     );
